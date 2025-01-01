@@ -1,0 +1,175 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    // font-family: 'Georgia', serif;
+    color: #333;
+  }
+  
+  .vendor-dropdown,
+  .item-dropdown {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .vendor-table,
+  .item-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .vendor-table th,
+  .item-table th {
+    background-color: #4a90e2;
+    color: #fff;
+    text-align: left;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  .vendor-table td,
+  .item-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    font-size: 15px;
+  }
+  
+  .vendor-table td {
+    background-color: #fafafa;
+  }
+  
+  input {
+    width: 90%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  input:read-only {
+    background-color: #f1f1f1;
+  }
+  
+  .mat-form-field {
+    background: #ffffff;
+    border-radius: 4px;
+  }
+  
+  .net-total {
+    text-align: right;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #4a90e2;
+    margin-top: 10px;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-right: 10px;
+    font-size: 1.2em;
+  }
+  
+  /* Hover Effects */
+  .item-table tr:hover {
+    background-color: #f5f5f5;
+  }
+  
+  button {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  button:hover {
+    background-color: #357ab8;
+  }
+  .vat-section {
+    display: flex;
+    justify-content: flex-end; /* Align VAT input and label to the right */
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.vat-section label {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.vat-section input {
+    width: 100px;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: right; /* Ensure the VAT value is right-aligned */
+}
+.vendor-details-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between elements */
+  margin-bottom: 20px;
+  align-items: center; /* Vertically align items */
+}
+
+.purchase-order-date,
+.purchase-order-no,
+.project-no {
+  flex: 1; /* Make all fields flexible */
+  min-width: 250px; /* Prevent fields from becoming too small */
+  max-width: 300px; /* Ensure a consistent width */
+}
+
+  
+  .purchase-order-date input {
+    width: 100%;
+  }
+  
+  .purchase-order-date mat-form-field {
+    width: 100%;
+  }
+  
+  .mat-datepicker-toggle {
+    padding: 10px;
+    margin-left: auto;
+  }
+  
+  .mat-form-field {
+    margin: 0;
+    margin-bottom: 16px;
+  }
+  .mat-input-element {
+    padding-right: 40px;
+  }
+  .add-item-button {
+    margin-top: 10px;
+    text-align: right;
+  
+    button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      font-size: 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+  
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }

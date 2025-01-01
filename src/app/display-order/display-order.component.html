@@ -1,0 +1,131 @@
+<div class="container">
+    <!-- Vendor Dropdown -->
+    <mat-form-field class="vendor-dropdown">
+        <mat-label>Select Vendor</mat-label>
+        <mat-select [(value)]="selectedVendor">
+            <mat-option *ngFor="let vendor of vendors" [value]="vendor">
+                {{ vendor.name }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <!-- Vendor Details Table and Purchase Order Date -->
+    <div class="vendor-details-container">
+        <table class="vendor-table" *ngIf="selectedVendor">
+            <thead>
+                <tr>
+                    <th>Label</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let detail of [
+                    { label: 'Vendor Name', value: selectedVendor.name },
+                    { label: 'Address', value: selectedVendor.address },
+                    { label: 'TRN', value: selectedVendor.trn }
+                ]">
+                    <td>{{ detail.label }}</td>
+                    <td>{{ detail.value }}</td>
+                </tr>
+            </tbody>
+        </table>
+</div>
+<div>
+        <!-- Purchase Order Date (Datepicker) -->
+        <mat-form-field class="purchase-order-date" appearance="fill">
+            <mat-label>Purchase Order Date</mat-label>
+            <input matInput [(ngModel)]="purchaseOrderDate" [matDatepicker]="picker" placeholder="Select a date" />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+                  <!-- Purchase Order No. -->
+        <mat-form-field class="purchase-order-no" appearance="fill">
+            <!-- <mat-label>Purchase Order No.</mat-label> -->
+            <input matInput [(ngModel)]="purchaseOrderNo" placeholder="Enter purchase order no." />
+        </mat-form-field>
+
+        <!-- Project No. -->
+        <mat-form-field class="project-no" appearance="fill">
+            <!-- <mat-label>Project No.</mat-label> -->
+            <input matInput [(ngModel)]="projectNo" placeholder="Enter project no." />
+        </mat-form-field>
+    </div>
+
+    <table class="item-table">
+        <thead>
+            <tr>
+                <th>Serial No</th>
+                <th>Part No</th>
+                <th>Make</th>
+                <th>Description</th>
+                <th>Unit Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of orderItems; let i = index">
+                <!-- Serial Number -->
+                <td>{{ i + 1 }}</td>
+
+                <!-- Part Number Search -->
+                <td>
+                    <input
+                        [(ngModel)]="item.partNo"
+                        (blur)="loadItemDetails(i, item.partNo)"
+                        placeholder="Enter part no"
+                    />
+                </td>
+
+                <!-- Make -->
+                <td><input [(ngModel)]="item.make" type="text" readonly /></td>
+
+                <!-- Description -->
+                <td><input [(ngModel)]="item.description" type="text" readonly /></td>
+
+                <!-- Unit Price -->
+                <td><input [(ngModel)]="item.unitPrice" type="number" readonly /></td>
+
+                <!-- Quantity -->
+                <td>
+                    <input
+                        [(ngModel)]="item.quantity"
+                        type="number"
+                        (change)="validateQuantity(item)"
+                        (blur)="calculateTotal(item)"
+                    />
+                </td>
+
+                <!-- Total -->
+                <td>
+                    <input
+                        [value]="item.total | number: '1.2-2'"
+                        type="text"
+                        readonly
+                    />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="add-item-button">
+        <button (click)="addNewItemRow()">+ Add Row</button>
+    </div>
+    <div class="add-item-button">
+</div>
+    <!-- Total Before VAT -->
+    <div class="vat-section">
+        <label>Net Total :</label>
+        <strong>{{ calculateTotalBeforeVAT() | currency: 'AED' }}</strong>
+    </div>
+
+<div class="vat-section">
+    <label>VAT Amount (5%):</label>
+    <strong>{{ calculateVATAmount() | currency: 'AED' }}</strong>
+</div>
+
+    <!-- Grand Total -->
+    <div class="net-total">
+        <label>Grand Total :</label>
+        <strong>{{ calculateGrandTotal() | currency: 'AED' }}</strong>
+    </div>
+</div>

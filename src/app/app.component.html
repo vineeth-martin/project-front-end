@@ -1,0 +1,35 @@
+
+<div style="background-color: #f4f4f9; padding: 20px; min-height: 100vh;">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <div class="app-container" *ngIf="!isHomeCollapsed">
+    <img src="/assets/logo.jpg" alt="Company Logo" class="logo" />
+
+    <div class="navigation-buttons">
+      <button mat-raised-button class="nav-button" (click)="navigateTo('vendor');">
+        <mat-icon>work</mat-icon>
+        Vendor
+      </button>
+      <button mat-raised-button class="nav-button" (click)="navigateTo('item')">
+        <mat-icon>business_center</mat-icon>
+        Item
+      </button>
+      <button mat-raised-button class="nav-button" (click)="navigateTo('display-order')">
+        <mat-icon>shopping_cart</mat-icon>
+        Display Order
+      </button>
+    </div>
+  </div>
+
+  <router-outlet *ngIf="isHomeCollapsed">
+    <div class="home-welcome">
+      <img src="/assets/logo.jpg" alt="Company Logo" class="logo" />
+
+      <button mat-raised-button color="primary" class="back-button" (click)="goBackToHome()">Back to Home</button>
+    </div>
+    <div class="title-container">
+      <span class="path-title">{{ pathTitle }}</span> <!-- Dynamic path title -->
+    </div>
+    
+  </router-outlet>
+</div>

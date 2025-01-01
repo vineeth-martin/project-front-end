@@ -1,0 +1,79 @@
+<div>
+    <h3>Manage Items</h3>
+
+    <!-- Search Box -->
+    <input
+      [(ngModel)]="searchQuery"
+      name="searchQuery"
+      placeholder="Search Item (Description - Part No)"
+      (input)="onSearchQueryChange()"
+      list="itemSuggestions"
+      class="search-input"
+    />
+    <mat-icon style="transform: translateY(+25%);">search</mat-icon>
+    <datalist id="itemSuggestions">
+      <option
+        *ngFor="let item of filteredItems"
+        [value]="item.description + ' - ' + item.partNo">
+      </option>
+    </datalist>
+    
+  
+    <!-- Form for Adding/Updating Items -->
+    <form (ngSubmit)="addItem()" class="item-form">
+      <div class="form-field">
+        <label for="description">Description:</label>
+        <input
+          [(ngModel)]="newItem.description"
+          name="description"
+          placeholder="Enter item description"
+          required
+        />
+      </div>
+  
+      <div class="form-field">
+        <label for="partNo">Part Number:</label>
+        <input
+          [(ngModel)]="newItem.partNo"
+          name="partNo"
+          placeholder="Enter part number"
+          required
+        />
+      </div>
+  
+      <div class="form-field">
+        <label for="make">Make:</label>
+        <input
+          [(ngModel)]="newItem.make"
+          name="make"
+          placeholder="Enter make"
+          required
+          maxlength="50"
+        />
+      </div>
+
+      <div class="form-field">
+        <label for="unitPrice">Unit Price:</label>
+        <input
+          [(ngModel)]="newItem.unitPrice"
+          name="unitPrice"
+          placeholder="Enter unit price"
+          type="number"
+          required
+        />
+      </div>
+      
+      <button type="submit">Insert / Update Item</button>
+      <button (click)="deleteItem(newItem.itemId)">Delete</button>
+
+    </form>
+  
+    <!-- List of Items -->
+    <!-- <h2>Item List</h2>
+    <ul class="item-list">
+      <li *ngFor="let item of items">
+        {{ item.description }} (Part No: {{ item.partNo }}, Price: {{ item.unitPrice | currency }})
+      </li>
+    </ul> -->
+  </div>
+  

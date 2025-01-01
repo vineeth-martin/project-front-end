@@ -1,0 +1,62 @@
+<div>
+
+    <!-- <h3>Add Vendor</h3>
+    <form (ngSubmit)="addVendor()">
+      <input [(ngModel)]="newVendor.name" name="name" placeholder="Name" required />
+      <input [(ngModel)]="newVendor.address" name="address" placeholder="Address" />
+      <input [(ngModel)]="newVendor.trn" name="trn" placeholder="TRN" />
+      <button type="submit">Add Vendor</button>
+    </form> -->
+
+  <form (ngSubmit)="addVendor()">
+    <h3>Vendor </h3>
+
+    <!-- Search Box -->
+    <input
+      [(ngModel)]="searchQuery"
+      name="searchQuery"
+      placeholder="Search Vendor"
+      (input)="onSearchQueryChange()"
+      list="vendorSuggestions"
+    /><mat-icon style="transform: translateY(+25%);">search</mat-icon>
+    <datalist id="vendorSuggestions">
+      <option *ngFor="let vendor of filteredVendors" [value]="vendor.name"></option>
+    </datalist>
+
+    <!-- Form Fields -->
+    <div class="form-field">
+      <label for="name">Name:</label>
+    <input
+      [(ngModel)]="newVendor.name"
+      name="name"
+      placeholder="Name"
+      required
+    />
+    </div>
+    <div class="form-field">
+      <label for="address">Address:</label>
+    <input
+      [(ngModel)]="newVendor.address"
+      name="address"
+      placeholder="Address"
+    />
+    </div>
+    <div class="form-field">
+      <label for="trn">TRN:</label>
+    <input
+      [(ngModel)]="newVendor.trn"
+      name="trn"
+      placeholder="TRN"
+    />
+    </div>
+    <button type="submit">Insert / Update</button>
+    <button (click)="deleteVendor(newVendor.vendorId)">Delete</button>
+
+  </form>
+  <!-- <h2>Vendor List</h2>
+  <ul>
+    <li *ngFor="let vendor of vendors">{{ vendor.name }}</li>
+  </ul> -->
+
+  </div>
+  
